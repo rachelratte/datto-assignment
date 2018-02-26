@@ -16,7 +16,7 @@ import pandas as pd
 df = pd.read_csv('quandl_full_data.csv', usecols=['ticker', 'date', 'open', 'close'])
 
 #drop rows that presumably have incorrect data (stocks' open or close should never be 0 or negative)
-df[(df[['open','close']] > 0).all(1)]
+df = df[(df[['open','close']] > 0).all(1)]
 
 #adds a new column 'average' to the dataframe where each row average[n] is the mean of open[n] and close[n]
 df['average'] = df[['open', 'close']].mean(axis=1)
